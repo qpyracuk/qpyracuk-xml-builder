@@ -1,19 +1,19 @@
 {
-  "name": "@qpyracuk/iterator",
-  "description": "Universal iterator for all data types",
-  "version": "0.1.0",
+  "name": "@qpyracuk/xml-builder",
+  "description": "Fast and powerful XML serializer",
+  "version": "0.0.2-alpha",
   "author": "Pobedinskiy David (qpyracuk)",
   "license": "Apache-2.0",
+  "type": "module",
   "keywords": [
-    "universal-iterator",
-    "iterator",
-    "object-iterator",
-    "depth-first",
-    "breadth-first",
-    "sequence"
+    "serializer",
+    "xml",
+    "fast",
+    "map",
+    "set"
   ],
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -22,12 +22,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qpyracuk/qpyracuk-iterator"
+    "url": "git+https://github.com/qpyracuk/qpyracuk-xml-builder"
   },
   "bugs": {
-    "url": "https://github.com/qpyracuk/qpyracuk-iterator/issues"
+    "url": "https://github.com/qpyracuk/qpyracuk-xml-builder/issues"
   },
-  "homepage": "https://github.com/qpyracuk/qpyracuk-iterator#README",
+  "homepage": "https://github.com/qpyracuk/qpyracuk-xml-builder#README",
   "devDependencies": {
     "@types/node": "^20.11.5",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
@@ -57,9 +57,9 @@
     }
   },
   "dependencies": {
-    "@qpyracuk/iterator": "^0.1.2"
+    "@qpyracuk/iterator": "^0.1.3"
   },
   "peerDependencies": {
-    "@qpyracuk/iterator": "^0.1.2"
+    "@qpyracuk/iterator": "^0.1.3"
   }
 }
