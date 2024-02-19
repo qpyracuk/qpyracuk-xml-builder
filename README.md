@@ -15,7 +15,7 @@ But the problem with arrays is a small thing compared to the fact that data stru
 
 Therefore, I decided that it was time for another bike, and sat down to write my own XML serializer.
 
-Fortunately, at this moment, I had my wonderful library @qpyracuk/iterator, which made my life much easier.
+Fortunately, at this moment, I had my wonderful library [@qpyracuk/iterator](https://www.npmjs.com/package/@qpyracuk/iterator), which made my life much easier.
 The iterator reliably traverses a data tree in depth and breadth and supports data structures such as Map and Set.
 Therefore, making XML from this ready-made data is a task for 1 evening, with the help of 5 mugs of coffee.
 
@@ -74,7 +74,7 @@ const futureXML = {
   primitive: '1',
   object: {
     primitive: 3,
-    array: ["1", 2, "three"]
+    array: ["1", 2, "three"],
     set: new Set([1, 2, new Map([['key', { field: { value: 100 } }]])]),
     map: new Map([['key', { value: 10 }]])
   }
@@ -83,6 +83,29 @@ const futureXML = {
 const builder = XML.createBuilder({ pretty: true, typed: true, preamble: true });
 const xml = builder.stringify(futureXML);
 ```
+
+## Options
+
+### pretty: `boolean`
+
+XML output with tabs and line breaks.
+
+### typed: `boolean`
+
+Sign the type of fields of objects or variables.
+
+### tab: `number | 'tab'`
+
+Tab size in spaces if specified as a positive numeric value.
+Is it possible to specify `'tab'` and then all whitespace characters will become `\t`.
+
+### encoding: `string`
+
+Encoding in XML preamble.
+
+### preamble: `boolean`
+
+Embed XML preamble.
 
 ## Builder methods
 
