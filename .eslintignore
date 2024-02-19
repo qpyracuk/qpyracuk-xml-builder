@@ -1,0 +1,11 @@
+/dist
+/node_modules
+/.vscode
+/.eslintrc
+/.eslintignore
+/.gitignore
+/LICENCE
+/tsconfig.json
+/tsup.config.ts
+/README.md
+/.prittierrc
