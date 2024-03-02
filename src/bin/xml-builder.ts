@@ -69,7 +69,7 @@ export default class Builder {
    * @param {any} data Any data
    * @returns {string} XML
    */
-  public stringify(data: unknown, depth: number): string {
+  public stringify(data: unknown, depth: number | 'Infinity'): string {
     const iterator = Iterator.createDepthFirstIterator(data, depth);
     const stack: INode[] = [];
     let deepLevel = 0,
@@ -112,7 +112,6 @@ export default class Builder {
     const parentTag = stack[stack.length - 1];
     const key = this.$__safeKey(node.key);
     const tab = this.$__tab(node.level);
-
     if (node.empty) {
       return parentTag.type === 'object' || parentTag.type === 'map'
         ? `${tab}<${key}${this.$__typeGenerator(node.type)}>${this.$__safeValue(node.value)}</${key}>${this.$nextLine}`
