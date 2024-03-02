@@ -1,3 +1,5 @@
+import { TEncoding } from './params';
+
 interface IBaseOptions {
   /**
    * @description Embed a preamble at the beginning
@@ -6,11 +8,20 @@ interface IBaseOptions {
   /**
    * @description Encoding specified in the XML preamble
    */
-  encoding?: 'UTF-8' | 'UTF-16' | 'Unicode' | 'win-1251';
+  encoding?: TEncoding;
   /**
    * @description XML-builder will produce typed XML
    */
   typed?: boolean;
+  /**
+   * @description Object bypass depth
+   */
+  depth?: number | 'Infinity';
+
+  /**
+   * @description Root object name
+   */
+  rootName?: string;
 }
 interface INonPrettyOptions extends IBaseOptions {
   /**

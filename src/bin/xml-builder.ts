@@ -2,7 +2,7 @@ import type { IConstructorParams } from '@/@types/params';
 import type { INode } from '@qpyracuk/iterator';
 import Iterator from '@qpyracuk/iterator';
 
-const PRIMITIVES = new Set(['number', 'string', 'boolean', 'symbol', 'bigint']);
+const PRIMITIVES = new Set(['number', 'string', 'boolean', 'symbol', 'bigint', 'date', 'ref', 'undefined']);
 
 const typeMap = new Map<string, string>([
   ['number', ' type="number"'],
@@ -16,6 +16,8 @@ const typeMap = new Map<string, string>([
   ['set', ' type="set"'],
   ['undefined', ' type="undefined"'],
   ['function', ' type="function"'],
+  ['ref', ' type="ref"'],
+  ['date', ' type="date"'],
   ['', '']
 ]);
 
@@ -67,8 +69,8 @@ export default class Builder {
    * @param {any} data Any data
    * @returns {string} XML
    */
-  public stringify(data: unknown): string {
-    const iterator = Iterator.createDepthFirstIterator(data);
+  public stringify(data: unknown, depth: number): string {
+    const iterator = Iterator.createDepthFirstIterator(data, depth);
     const stack: INode[] = [];
     let deepLevel = 0,
       closeTag: INode | undefined,
@@ -110,6 +112,12 @@ export default class Builder {
     const parentTag = stack[stack.length - 1];
     const key = this.$__safeKey(node.key);
     const tab = this.$__tab(node.level);
+
+    if (node.empty) {
+      return parentTag.type === 'object' || parentTag.type === 'map'
+        ? `${tab}<${key}${this.$__typeGenerator(node.type)}>${this.$__safeValue(node.value)}</${key}>${this.$nextLine}`
+        : `${tab}<i${this.$__typeGenerator(node.type)}>${this.$__safeValue(node.value)}</i>${this.$nextLine}`;
+    }
     const isPrimitive = PRIMITIVES.has(node.type);
     if (!isPrimitive) stack.push(node);
     return parentTag === undefined

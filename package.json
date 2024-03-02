@@ -1,7 +1,7 @@
 {
   "name": "@qpyracuk/xml-builder",
   "description": "Fast and powerful XML serializer",
-  "version": "0.0.2-alpha",
+  "version": "0.1.1",
   "author": "Pobedinskiy David (qpyracuk)",
   "license": "Apache-2.0",
   "type": "module",
@@ -57,9 +57,9 @@
     }
   },
   "dependencies": {
-    "@qpyracuk/iterator": "^0.1.3"
+    "@qpyracuk/iterator": "^0.1.5"
   },
   "peerDependencies": {
-    "@qpyracuk/iterator": "^0.1.3"
+    "@qpyracuk/iterator": "^0.1.5"
   }
 }
